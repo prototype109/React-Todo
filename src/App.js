@@ -12,11 +12,29 @@ class App extends React.Component {
       super();
       this.state = {
         list : [
-            'first',
-            'second',
-            'third'
+          {
+            task: 'Organize Garage',
+            id: 1528817077286,
+            completed: false
+          },
+          {
+            task: 'Bake Cookies',
+            id: 1528817084358,
+            completed: false
+          }
         ]
     }
+  }
+
+  toggleSelection = (itemId) => {
+    this.setState({
+      list: this.state.list.map(item => {
+        if(item.id === itemId){
+          return {...item, completed: !item.completed}
+        }
+        return item;
+      })
+    });
   }
 
   addToList = item => {
@@ -28,7 +46,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList list={this.state.list} />
+        <TodoList list={this.state.list} select={this.toggleSelection} />
         <TodoForm add={this.addToList} />
       </div>
     );

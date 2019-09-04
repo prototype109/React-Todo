@@ -14,7 +14,9 @@ class TodoForm extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.add(this.state.itemInput)
+        this.props.add({task: this.state.itemInput, 
+                        id: Date.now(),
+                        completed: false})
         this.setState({itemInput: ''});
     }
 
