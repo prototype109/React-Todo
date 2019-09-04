@@ -2,27 +2,14 @@
 // feel free to change this component.js into TodoList.js
 import React from 'react';
 
-class TodoList extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            list : [
-                'first',
-                'second',
-                'third'
-            ]
-        }
-    }
-
-    render(){
-        return(
+const TodoList = props => {
+    return(
             <ul>
-                {this.state.list.map( (item, index) => (
+                {props.list.map( (item, index) => (
                     <li key={index}>{item}</li>
-        ))}
+                ))}
             </ul>
-        )
-    }
+    )
 }
 
 export default TodoList;
